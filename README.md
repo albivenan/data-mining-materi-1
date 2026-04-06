@@ -1,58 +1,126 @@
-# Bank Marketing Analysis - Data Mining Project
+# 🏦 Bank Marketing Analysis - Data Mining Project
 
-Proyek ini bertujuan untuk menganalisis data pemasaran bank menggunakan teknik data mining untuk memprediksi apakah seorang nasabah akan berlangganan deposito berjangka (fitur `y`) berdasarkan berbagai atribut profil nasabah.
+Proyek ini bertujuan untuk menganalisis data pemasaran bank menggunakan teknik **machine learning (Random Forest)** untuk memprediksi apakah seorang nasabah akan berlangganan deposito berjangka (`y`) berdasarkan profil dan riwayat interaksi nasabah.
+
+---
 
 ## 📁 Struktur Proyek
-- `data_mining.py`: Skrip Python utama yang berisi alur kerja *machine learning* (Preprocessing, Training, dan Evaluasi).
-- `bank.csv`: Dataset yang berisi data profil nasabah dan riwayat kampanye pemasaran (menggunakan pemisah `;`).
 
-## ⚙️ Prasyarat (Requirements)
-Sebelum menjalankan program, pastikan Anda telah menginstal bahasa pemrograman Pyhton dan pustaka berikut:
+* `data_mining.py` → Skrip utama yang berisi proses *machine learning* (preprocessing, training, dan evaluasi)
+* `bank.csv` → Dataset berisi data nasabah dan riwayat kampanye pemasaran (delimiter `;`)
+
+---
+
+## ⚙️ Requirements
+
+Pastikan telah menginstal Python dan library berikut:
+
 ```bash
 pip install numpy pandas matplotlib scikit-learn
 ```
-## Keterangan Atribut (17 atribut)
-Berikut terjemahan dan maksudnya:
 
-age → umur nasabah
-job → pekerjaan nasabah
-marital → status pernikahan (lajang, menikah, cerai)
-education → tingkat pendidikan
-default → apakah pernah gagal bayar kredit (ya/tidak)
-balance → saldo rekening
-housing → memiliki pinjaman rumah (KPR) atau tidak
-loan → memiliki pinjaman pribadi atau tidak
-contact → jenis kontak yang digunakan (telepon, seluler, dll.)
-day → hari dalam bulan saat dihubungi
-month → bulan saat dihubungi
-duration → durasi panggilan (biasanya dalam detik)
-campaign → jumlah kontak yang dilakukan selama kampanye ini
-pdays → jumlah hari sejak terakhir kali dihubungi (-1 biasanya artinya belum pernah dihubungi)
-previous → jumlah kontak sebelum kampanye ini
-poutcome → hasil kampanye pemasaran sebelumnya
-y → target/output (biasanya apakah nasabah berlangganan produk, misalnya deposito: ya/tidak)
+---
+
+## 📊 Deskripsi Dataset
+
+Dataset terdiri dari **17 atribut** yang merepresentasikan karakteristik nasabah dan aktivitas marketing:
+
+| Atribut   | Deskripsi                              |
+| --------- | -------------------------------------- |
+| age       | Umur nasabah                           |
+| job       | Pekerjaan                              |
+| marital   | Status pernikahan                      |
+| education | Tingkat pendidikan                     |
+| default   | Status gagal bayar kredit              |
+| balance   | Saldo rekening                         |
+| housing   | Kepemilikan pinjaman rumah (KPR)       |
+| loan      | Kepemilikan pinjaman pribadi           |
+| contact   | Jenis kontak                           |
+| day       | Hari kontak                            |
+| month     | Bulan kontak                           |
+| duration  | Durasi panggilan                       |
+| campaign  | Jumlah kontak selama kampanye          |
+| pdays     | Hari sejak kontak terakhir             |
+| previous  | Jumlah kontak sebelumnya               |
+| poutcome  | Hasil kampanye sebelumnya              |
+| y         | Target (berlangganan deposito: yes/no) |
+
+---
 
 ## 🚀 Cara Menjalankan
-1. Letakkan `data_mining.py` dan `bank.csv` dalam folder yang sama.
-2. Jalankan skrip menggunakan Python:
+
+1. Pastikan file `data_mining.py` dan `bank.csv` berada dalam folder yang sama
+2. Jalankan perintah berikut:
+
 ```bash
 python data_mining.py
 ```
 
-## 🔍 Hubungan Antar File
-Skrip `data_mining.py` dirancang untuk membaca file `bank.csv` secara otomatis sebagai sumber data utama. Hubungan teknisnya adalah sebagai berikut:
-1. **Pemuatan Data**: Skrip memanggil `pd.read_csv('bank.csv', sep=';')`. Pastikan nama file tetap `bank.csv` agar tidak terjadi error.
-2. **Preprocessing**: Data mentah dari CSV akan diolah (mengisi nilai kosong, mengubah teks menjadi angka, dan standarisasi) sebelum dimasukkan ke model.
-3. **Prediksi**: Model *Random Forest* akan belajar dari pola yang ada di `bank.csv` untuk kemudian diuji akurasinya.
+---
 
-## 📊 Alur Kerja Skrip
-1. **Import Dataset**: Membaca data dari `bank.csv`.
-2. **Handling Missing Values**: Mengganti nilai 'unknown' dengan nilai yang paling sering muncul (modus).
-3. **Encoding**: Mengubah data kategorikal (teks) menjadi format numerik menggunakan *One Hot Encoding* (untuk fitur) dan *Label Encoding* (untuk target).
-4. **Splitting Data**: Membagi data menjadi 80% untuk pelatihan dan 20% untuk pengujian.
-5. **Feature Scaling**: Menyamakan skala seluruh angka agar model bekerja lebih optimal.
-6. **Training**: Melatih model menggunakan algoritma **Random Forest Classifier**.
-7. **Evaluation**: Menampilkan Akurasi, *Confusion Matrix*, dan *Classification Report*.
+## 🔍 Alur Machine Learning
+
+Proyek ini menggunakan tahapan berikut:
+
+1. **Data Loading**
+   Membaca dataset menggunakan `pandas`
+
+2. **Data Preprocessing**
+
+   * Mengganti nilai `unknown` dengan modus
+   * Membersihkan dan menyiapkan data
+
+3. **Encoding**
+
+   * *One Hot Encoding* untuk fitur kategorikal
+   * *Label Encoding* untuk target
+
+4. **Data Splitting**
+
+   * 80% data training
+   * 20% data testing
+
+5. **Feature Scaling**
+   Menyamakan skala fitur numerik agar model optimal
+
+6. **Model Training**
+   Menggunakan algoritma **Random Forest Classifier**
+
+7. **Model Evaluation**
+
+   * Accuracy
+   * Confusion Matrix
+   * Classification Report (*precision, recall, f1-score*)
 
 ---
-*Dibuat untuk keperluan analisis data mining.*
+
+## 🤖 Model yang Digunakan
+
+Model utama dalam proyek ini adalah:
+
+* **Random Forest Classifier**
+  Algoritma ensemble yang menggabungkan banyak decision tree untuk meningkatkan akurasi dan mengurangi overfitting.
+
+---
+
+## 🎯 Tujuan Proyek
+
+* Memprediksi peluang nasabah berlangganan deposito
+* Membantu pengambilan keputusan dalam strategi pemasaran
+* Menganalisis faktor-faktor yang memengaruhi keputusan nasabah
+
+---
+
+## 📌 Catatan
+
+* Pastikan nama file dataset tetap `bank.csv`
+* Gunakan delimiter `;` saat membaca data
+* Dataset bersifat supervised learning (memiliki label `y`)
+
+---
+
+## ✍️ Penulis
+
+Repository ini dibuat untuk keperluan pembelajaran **data mining & machine learning**.
+
+---
