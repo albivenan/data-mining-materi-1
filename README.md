@@ -11,6 +11,26 @@ Sebelum menjalankan program, pastikan Anda telah menginstal bahasa pemrograman P
 ```bash
 pip install numpy pandas matplotlib scikit-learn
 ```
+## Keterangan Atribut (17 atribut)
+Berikut terjemahan dan maksudnya:
+
+age → umur nasabah
+job → pekerjaan nasabah
+marital → status pernikahan (lajang, menikah, cerai)
+education → tingkat pendidikan
+default → apakah pernah gagal bayar kredit (ya/tidak)
+balance → saldo rekening
+housing → memiliki pinjaman rumah (KPR) atau tidak
+loan → memiliki pinjaman pribadi atau tidak
+contact → jenis kontak yang digunakan (telepon, seluler, dll.)
+day → hari dalam bulan saat dihubungi
+month → bulan saat dihubungi
+duration → durasi panggilan (biasanya dalam detik)
+campaign → jumlah kontak yang dilakukan selama kampanye ini
+pdays → jumlah hari sejak terakhir kali dihubungi (-1 biasanya artinya belum pernah dihubungi)
+previous → jumlah kontak sebelum kampanye ini
+poutcome → hasil kampanye pemasaran sebelumnya
+y → target/output (biasanya apakah nasabah berlangganan produk, misalnya deposito: ya/tidak)
 
 ## 🚀 Cara Menjalankan
 1. Letakkan `data_mining.py` dan `bank.csv` dalam folder yang sama.
