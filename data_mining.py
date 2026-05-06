@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 from tabulate import tabulate
+from imblearn.over_sampling import SMOTE
 
 def cetak_tabel(df, judul, jumlah=3):
     """Fungsi helper untuk mencetak tabel cantik dengan garis sel"""
@@ -79,10 +80,17 @@ print("6. Normalisasi data (Feature Scaling) selesai.")
 cetak_tabel(X_train[:, :10], "X_TRAIN SETELAH SCALING (10 KOLOM PERTAMA)", 2)
 
 # ==========================================
+# 6.5. OVERSAMPLING (SMOTE)
+# ==========================================
+sm = SMOTE(random_state=1)
+X_train_res, y_train_res = sm.fit_resample(X_train, y_train)
+print(f"6.5. SMOTE selesai: {len(X_train)} baris menjadi {len(X_train_res)} baris (Balanced).")
+
+# ==========================================
 # 7. MELATIH MODEL (RANDOM FOREST)
 # ==========================================
 classifier = RandomForestClassifier(n_estimators=100, criterion='entropy', random_state=1)
-classifier.fit(X_train, y_train)
+classifier.fit(X_train_res, y_train_res)
 print("7. Model Random Forest berhasil dilatih.\n")
 
 # ==========================================
